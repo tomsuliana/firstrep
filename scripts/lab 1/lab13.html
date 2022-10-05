@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Расписание</title>
+</head>
+<body>
+    <h1>Расписание на числитель</h1>
+    <p><img src="pic.jpg" height="250" alt="Просто картинка"></p>
+    <table width="80%" border="1">
+        <tr>
+            <th></th>
+            <th>пн</th>
+            <th>вт</th>
+            <th>ср</th>
+            <th>чт</th>
+            <th>пт</th>
+            <th>сб</th>
+        </tr>
+        <tr>
+            <th>08:30-10:05</th>
+            <td style="background-color:green;">ТВиМС</td>
+            <td rowspan="2" style="background-color:purple;">ЯИП</td>
+            <td style="background-color:blue;">Физ</td>
+            <td rowspan="2" style="background-color:purple;">Физ</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>10:15-11:50</th>
+            <td style="background-color:blue;">ТВиМС</td>
+            <td style="background-color:blue;">Электр</td>
+            <td style="background-color:blue;">ТВиМС</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>12:00-13:35</th>
+            <td></td>
+            <td style="background-color:blue;">ЯИП</td>
+            <td style="background-color:green;">Электр</td>
+            <td rowspan="2" style="background-color:purple;">Электр</td>
+            <td style="background-color:green;">ИЯ</td>
+            <td style="background-color:green;">Прав</td>
+        </tr>
+        <tr>
+            <th>13:50-15:25</th>
+            <td></td>
+            <td style="background-color:blue;">БД</td>
+            <td style="background-color:green;">ЭКпоФКИС</td>
+            <td style="background-color:green;">ЭКпоФКИС</td>
+            <td style="background-color:green;">Физ</td>
+        </tr>
+    </table>
+    <h2>Запись на занятия</h2>
+    <form>
+        <table>
+            <tr>
+               <th>Фамилия:</th><td><input type="text" name="lname"  /></td>
+            </tr>
+            <tr>
+                <th>Группа: </th>
+                <td><input type="radio" name="group" value="ИУ6-31Б" />ИУ6-31Б</td>
+                <td><input type="radio" name="group" value="ИУ6-32Б" />ИУ6-32Б</td>
+                <td><input type="radio" name="group" value="ИУ6-33Б" />ИУ6-33Б</td>
+            </tr>
+            <tr>
+                <th>Предметы:</th>
+                <td><input type="checkbox" name="subject" value="ТВиМС" />ТВиМС</td>
+                <td><input type="checkbox" name="subject" value="Электр" />Электр</td>
+                <td><input type="checkbox" name="subject" value="ЯИП" />ЯИП</td>
+            </tr>
+        </table>
+        <input type="submit" value="Отправить" />
+    </form>
+</body>
+</html>
