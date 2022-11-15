@@ -3,17 +3,22 @@
 
 <h2>Вы ввели число = <%= @digit %></h2>
 
+<% def is_palindrom(a) %>
+  <%(a % 2).zero?%>
+  <%end%>
+
 <table>
   <tr>
     <th>Число</th>
     <th>Квадрат числа</th>
   </tr>
-  <% n = @num%>
-  <% n.times do |i| %>
+  <% @num.times do |i| %>
+    <% if is_palindrom(i) %>
     <tr>
       <td><%= i%></td>
       <td><%= i*i%></td>
     </tr>
+    <% end %>
   <% end %>
 </table>
 
