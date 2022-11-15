@@ -3,4 +3,18 @@
 
 <h2>Вы ввели число = <%= @digit %></h2>
 
+<table>
+  <tr>
+    <th>Число</th>
+    <th>Квадрат числа</th>
+  </tr>
+  <% n = @num%>
+  <% n.times do |i| %>
+    <tr>
+      <td><%= i%></td>
+      <td><%= i*i%></td>
+    </tr>
+  <% end %>
+</table>
+
 <%= link_to 'Вернуться на страницу ввода', root_path %>
