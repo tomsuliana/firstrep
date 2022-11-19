@@ -1,25 +1,16 @@
 <h1>Example#show</h1>
-<p>Find me in app/views/example/show.html.erb</p>
-
-<h2>Вы ввели число = <%= @digit %></h2>
-
-<% def is_palindrom(a) %>
-  <%(a % 2).zero?%>
-  <%end%>
-
 <table>
   <tr>
     <th>Число</th>
     <th>Квадрат числа</th>
   </tr>
-  <% @num.times do |i| %>
-    <% if is_palindrom(i) %>
+  <% @arr.length().times do |i| %>
     <tr>
-      <td><%= i%></td>
-      <td><%= i*i%></td>
+      <td><%= @arr[i]%></td>
+      <td><%= @arr[i]*@arr[i]%></td>
     </tr>
-    <% end %>
   <% end %>
 </table>
+<h3>Количество: <%= @arr.length() %> </h3>
 
 <%= link_to 'Вернуться на страницу ввода', root_path %>

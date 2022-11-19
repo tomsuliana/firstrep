@@ -4,11 +4,8 @@
 <%= form_with url: "/example/show", method: :get do |form| %>
   <%= form.label :digit, 'Число' %>
   <%= form.text_field :digit %>
-  <br/>
-  <%= form.label :repeater, 'Сколько раз напечатать' %>
-  <%= form.number_field :repeater %>
-  <br/>
   <%= form.submit 'Отправить' %>
 <% end %>
 
+<p><%= flash[:error]%></p>
 
