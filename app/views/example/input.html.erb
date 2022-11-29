@@ -1,9 +1,9 @@
-<h1>Example#input</h1>
+<h1>Ввод числа</h1>
 
 
-<%= form_with url: "/example/show", method: :get do |form| %>
+<%= form_with url: result_path, method: :get do |form| %>
   <%= form.label :digit, 'Число' %>
-  <%= form.text_field :digit %>
+  <%= form.text_field(:digit, value: "78") %>
   <%= form.submit 'Отправить' %>
 <% end %>
 
