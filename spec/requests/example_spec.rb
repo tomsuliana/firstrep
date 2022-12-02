@@ -3,54 +3,56 @@ require 'nokogiri'
 
 RSpec.describe "Examples", type: :request do
   describe "GET /input" do
-    it "returns http success" do
-      get root_path
+    before { get root_path } # перед каждым тестом делать запрос
+
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
+    end
+
+    it 'renders input template' do
+      expect(response).to render_template(:input)
+    end
+
+    it 'responds with html' do
+      expect(response.content_type).to match(%r{text/html})
     end
   end
 
   describe "GET /show" do
+    subject {post result_path, params:{digit:78}, xhr: true}
     it "returns http success" do
-      get "/example/show", params: {digit:78}
+      subject
       expect(response).to have_http_status(:success)
     end
   end
     context 'shouldn`t redirect and return http Error if' do
+      before {  post result_path, xhr: true } 
       it 'redirecting was without params' do
-        get '/example/show'
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(:success)
       end
-
-      it 'input 88uu ' do
-        get '/example/show', params: {digit: '67ff'}
-        expect(response).to have_http_status(302)
+      it 'responds with turbo stream' do
+        expect(response.content_type).to match(%r{text/vnd.turbo-stream.html})
       end
-
-      it 'input h7' do
-        get '/example/show', params: {digit: 'h7'}
-        expect(response).to have_http_status(302)
-      end
-      it 'input words' do
-        get '/example/show', params: {digit: 'ubuntu'}
-        expect(response).to have_http_status(302)
+      it 'assigns invalid model object' do
+        expect(assigns(:arr).empty?).to be true
       end
     end
+    context 'when params are ok' do 
+      let (:digit) {78}
+      before { post result_path, params: { digit:digit}, xhr: true }
 
-    context 'should return body contains' do
-      it 'number 78' do
-        get '/example/show', params: {digit: 78}
-        html = Nokogiri::HTML(response.body)
-        expects = [0,0,1,1,2,4,3,9,11,121,22,484]
-        expects.each_with_index do |el, idx|
-          div = html.search('td')[idx.to_i].text.to_i
-          expect(div).to eq(el)
-        end
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
       end
-      it 'number 78' do
-        get '/example/show', params: {digit: 78}
-        html = Nokogiri::HTML(response.body)
-        div = html.search('h3').text
-        expect(div).to eq("Количество: 6 ")
+      it 'renders result templates' do
+        expect(response).to render_template(:_result)
+      end
+      it 'responds with turbo stream' do
+        expect(response.content_type).to match(%r{text/vnd.turbo-stream.html})
+      end
+
+      it 'assigns valid model object' do
+        expect(assigns(:arr).empty?).to be false
       end
     end
 end

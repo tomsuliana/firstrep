@@ -2,15 +2,11 @@
 
 # Class for controller
 class ExampleController < ApplicationController
+  before_action :check, only: [:show]
   def input; end
 
   def show
-    num = params[:digit]
-    flash[:error] = check(num)
-
-    redirect_to root_path unless flash[:error].nil?
-
-    @arr = palindroms(num.to_i)
+    @arr = palindroms(params[:digit].to_i)
   end
 
   private
@@ -28,9 +24,15 @@ class ExampleController < ApplicationController
     mas
   end
 
-  def check(num)
-    return 'Empty string' if num.nil? || num.empty?
+  def check
+    num = params[:digit]
+    # return 'Empty string' if num.nil? || num.empty?
 
-    'Enter numbers only' unless num.match(/^\d+$/)
+    # 'Enter numbers only' unless num.match(/^\d+$/)
+    if num.nil? || num.empty?
+      @error = 'Empty string'
+    elsif !num.match(/^\d+$/)
+      @error = 'Enter numbers only'
+    end
   end
 end

@@ -1,1 +1,5 @@
-<%= turbo_stream.replace 'result' , partial: 'result'%>
+<% if @error.nil?%>
+  <%= turbo_stream.replace 'result' , partial: 'result'%>
+<% else %>
+  <%= turbo_stream.replace 'result' , partial: 'error'%>
+<% end %>
