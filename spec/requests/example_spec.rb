@@ -38,7 +38,7 @@ RSpec.describe "Examples", type: :request do
       end
     end
     context 'when params are ok' do 
-      let (:digit) {78}
+      let (:digit) {Faker::Number.number(digits: 3)}
       before { post result_path, params: { digit:digit}, xhr: true }
 
       it 'returns http success' do
