@@ -4,7 +4,7 @@
 <%= form_with url: result_path, method: :post do |form| %>
   <%= form.label :digit, 'Число' %>
   <%= form.text_field(:digit, value: "78") %>
-  <%= form.submit ('Отправить', id: '#palindrom-btn') %>
+  <%= form.submit('Отправить', id: 'palindrom-btn') %>
 <% end %>
 
 <p><%= flash[:error]%></p>
