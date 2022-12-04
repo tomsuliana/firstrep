@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RK1 </title>
+    <script>
+        let num = 0;
+        let arr=[];
+        function printrow(){
+            s = 0;
+            b = 0;
+            inputnumber = document.getElementById('input_number').value;
+            list = inputnumber.split(' ');
+            newstr = inputnumber.replaceAll('-','');
+            var reg = /^(\d+ *[,;]? *)*$/;
+            if (newstr.match(reg)){
+                for (i=0;i<list.length;i++){
+                    n = parseInt(list[i]);
+                    arr.push(n);
+                    new_row = document.createElement('tr');
+                    new_td1 = document.createElement('td');
+                    new_td2 = document.createElement('td');
+                    new_td1.innerText = i+1;
+                    new_td2.innerText = arr[i];
+                    new_row.appendChild(new_td1);
+                    new_row.appendChild(new_td2);
+                    document.getElementById("table1").appendChild(new_row);
+                }
+            }
+            else(alert("Not normal"))
+            
+        }
+        function process(){
+            s = 0;
+            k = 0;
+            for (i = 0;i<arr.length;i++){
+                if (arr[i]>0){
+                    s = s+arr[i];
+                    k = k+1;
+                }
+            }
+            sred = s/k;
+            p = arr.length/2;
+            if (arr.length%2==1){
+                p = p+0.5;
+            }
+            arr[p-1] = sred;
+            for (i=0;i<arr.length;i++){
+                new_row = document.createElement('tr');
+                new_td1 = document.createElement('td');
+                new_td2 = document.createElement('td');
+                new_td1.innerText = i+1;
+                new_td2.innerText = arr[i];
+                new_row.appendChild(new_td1);
+                new_row.appendChild(new_td2);
+                document.getElementById("table2").appendChild(new_row);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Томская Ульяна Павловна ИУ6-31Б</h1>
+            <h1>Вариант №15</h1>
+            <p>Дан массив чисел arr_1. Определить среднее арифметическое значение положительных элементов массива и поместить его на место срединного элемента массива.</p>
+            <p>Место для ввода чисел: (например -9 8 -5 6) </p>
+            <p>Ввод: <input type="text" value="-9 8 -5 6" id="input_number"></p> 
+            <p id="print"></p>
+            <input type="button" value="Добавить" onclick="printrow()">
+        </div>
+        <div>
+            <table id="table1">
+                <tr>
+                    <th>
+                        №
+                    </th>
+                    <th>
+                        Число
+                    </th>
+                </tr>
+            </table>
+
+        </div>
+        <div>
+            <input type="button" value="Обработать" onclick="process()">
+            <p id="sum"></p>
+        </div>
+        <div>
+            <table id="table2">
+                <tr>
+                    <th>
+                        №
+                    </th>
+                    <th>
+                        Число
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

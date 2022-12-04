@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title>ICS6 Bootstrap</title>
+    <link
+    href="http://e-learning.bmstu.ru/iu6/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin-bottom: 40px;
+        }
+        main {
+            margin-top: 15px;
+        }
+        footer {
+            height: 40px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .my-primary {
+            background-color: plum;
+            color: black;
+        }
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .cursive{
+            font-style: italic;
+        }
+        .greencursive{
+            color: aquamarine;
+            font-style: italic;
+            background-color: black;
+        }
+        .shadow th:hover{
+            background-color: blueviolet;
+        }
+        </style>
+</head>
+<body>
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark my-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+    <a class="nav-link" href="#">Home
+    <span class="sr-only">(current)</span>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+    </li>
+    </ul>
+    </nav>
+ </header>
+ <main class="container">
+ <div class="row">
+    <div class="col-8">
+        <form>
+            <div>
+            <table>
+                <tr>
+                   <th class="bg-info">Фамилия:</th><td><input type="text" name="lname"/></td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Группа: </th>
+                    <td><input type="radio" name="group" value="ИУ6-31Б" />ИУ6-31Б</td>
+                    <td><input type="radio" name="group" value="ИУ6-32Б" />ИУ6-32Б</td>
+                    <td><input type="radio" name="group" value="ИУ6-33Б" />ИУ6-33Б</td>
+                </tr>
+                <tr>
+                    <th class="bg-primary">Предметы:</th>
+                    <td><input type="checkbox" name="subject" value="ТВиМС" />ТВиМС</td>
+                    <td><input type="checkbox" name="subject" value="Электр" />Электр</td>
+                    <td><input type="checkbox" name="subject" value="ЯИП" />ЯИП</td>
+                </tr>
+            </table>
+            <input type="submit" value="Отправить" />
+            </div>
+        </form>
+     </div>
+ <div class="col-4">
+ <img
+ src=" http://e-learning.bmstu.ru/iu6/pluginfile.php/7546/mod_folder/content/0/avatar.jpg"
+ alt="avatar" width="150" height="150">
+ </div>
+ 
+ </div>
+
+ <div class="row">
+
+ <div class="col-4">
+ </div>
+ <table class="table">
+    <tr class="shadow">
+        <th></th>
+        <th>пн</th>
+        <th>вт</th>
+        <th>ср</th>
+        <th>чт</th>
+        <th>пт</th>
+        <th>сб</th>
+    </tr>
+    <tr>
+        <th class="mark">08:30-10:05</th>
+        <td style="background-color:green;">ТВиМС</td>
+        <td rowspan="2" style="background-color:purple;">ЯИП</td>
+        <td style="background-color:blue;">Физ</td>
+        <td rowspan="2" style="background-color:purple;">Физ</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th class="mark">10:15-11:50</th>
+        <td style="background-color:blue;">ТВиМС</td>
+        <td style="background-color:blue;">Электр</td>
+        <td style="background-color:blue;" class="font-weight-italic">ТВиМС</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th class="mark">12:00-13:35</th>
+        <td></td>
+        <td style="background-color:blue;">ЯИП</td>
+        <td style="background-color:green;">Электр</td>
+        <td rowspan="2" style="background-color:purple;">Электр</td>
+        <td style="background-color:green;">ИЯ</td>
+        <td style="background-color:green;">Прав</td>
+    </tr>
+    <tr>
+        <th class="mark">13:50-15:25</th>
+        <td></td>
+        <td style="background-color:blue;">БД</td>
+        <td style="background-color:green;">ЭКпоФКИС</td>
+        <td style="background-color:green;">ЭКпоФКИС</td>
+        <td style="background-color:green;">Физ</td>
+    </tr>
+</table>
+ </div>
+ <div class="row">
+ <div class="col">
+    <ul>
+        <li><span class="cursive">Знаешь</span> ли ты </li>
+        <li>Вдоль ночных дорог</li>
+        <li><span class="blue">Шла</span> босиком</li>
+        <li>Не жалея ног</li>
+        <li><span class="red">Сердце</span> его теперь в твоих руках</li>
+        <li>Не потеряй его</li>
+        <li>И не <span class="greencursive">сломай</span></li>
+    </ul>
+    <p><s>Математическая</s> Физическая формула: <var>E</var>=<var>m</var>*<var>c<sup>2</sup></var></p>
+    <p><span class="greencursive">Химическая</span> формула: <var>H<sub>2</sub></var><var>O</var></p>
+ </div>
+ </div>
+ </main>
+ <footer class="my-primary">
+ <div class="container">
+ <p class="footer-text">Footer</p>
+ </div>
+ </footer>
+</body>
+</html>

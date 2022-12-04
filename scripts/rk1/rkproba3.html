@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+
+<body>
+<div>
+<div>
+<h1>Рк1</h1>
+<h2 style="font-family:Arial, Helvetica, sans-serif;">Соболев Н.А. ИУ6Ц-52Б</h2>
+</div>
+<div>
+<pre>
+текст задания:
+дан массив чисел arr_u.
+определить минимум и максимум
+массива поменять их местами в массиве,
+а сумму этих элементов поместить на
+место элемента с индексом k, где k - введенное значение
+</pre>
+</div>
+<div>
+<table border="2" id="table">
+<tr>
+<th style="min-width:25px;">id</th>
+<th style="min-width:100px;">count</th>
+</tr>
+<tbody id="tableBody">
+<tr>
+
+</tr>
+</tbody>
+</table>
+Число<input id="inputCountArr" style="margin: 15px 0px 0px 0px ;" value="1" />
+K = <input id="k" value="0"/>
+</div>
+<div style="margin: 15px 0px 0px 0px;">
+<button id="addCountToArr">
+ADD to arr_u
+</button>
+<button id="getRessoult">
+make it
+</button>
+<div>
+<p>Вы ввели: </p>
+<p id="preRes"></p>
+</div>
+<div>
+<p>Результат вычислений:</p>
+<p id="Res"></p>
+</div>
+</div>
+</div>
+<script>
+var arr_u = new Array();
+var btn = document.getElementById('addCountToArr');
+var counter = 0;
+btn.onclick = function () {
+var inputCount = document.getElementById("inputCountArr");
+var table = document.getElementById("table");
+var tbody = document.getElementById("tableBody");
+function ArrTest() {
+let tr = document.createElement("tr");
+for (let i = 0; i < 2; i++) {
+let td = document.createElement("td");
+if (typeof (Number(inputCount.value)) == 'number') {
+if (i == 0) {
+td.innerHTML = counter;
+counter = counter + 1;
+}
+else if (i == 1) {
+td.innerHTML = inputCount.value;
+arr_u.push(Number(inputCount.value));
+
+}
+
+tr.appendChild(td);
+table.appendChild(tr);
+}
+else { alert('Введите число')}
+
+}
+}
+ArrTest();
+}
+</script>
+<script>
+var btnMake = document.getElementById('getRessoult');
+btnMake.onclick = function () {
+var divPreRes = document.getElementById('preRes');
+var divRes = document.getElementById('Res');
+var sum = 0;
+function Test()
+{
+divRes.innerHTML = '';
+var k = document.getElementById('k');
+if(typeof(Number()) == 'number')
+{
+var saveMin = 0;
+var saveMax = 0;
+var minValue = arr_u[0];
+var maxValue = arr_u[0];
+for(let i = 0; i < arr_u.length;i++)
+{
+if(arr_u[i] > maxValue)
+{
+maxValue = arr_u[i];
+saveMax = i;
+}
+if(arr_u[i] < minValue)
+{
+minValue = arr_u[i];
+saveMin = i;
+}
+}
+sum = minValue + maxValue;
+var kCount = Number(k.value);
+arr_u[saveMin] = maxValue;
+arr_u[saveMax] = minValue;
+arr_u[kCount] = sum;
+for(let j = 0; j < arr_u.length;j++)
+{
+divRes.innerHTML += arr_u[j] + ' ';
+}
+
+}
+}
+Test();
+
+}
+
+
+
+</script>
+
+</html>

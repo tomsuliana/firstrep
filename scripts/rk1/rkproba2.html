@@ -1,0 +1,111 @@
+<!DOCTYPE>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r k 1</title>
+</head>
+<body>
+<div>
+<div>
+<h1>Рубежный контроль №1</h1>
+<h2>Петрищев Иван Сергеевич ИУ6Ц-52Б</h2>
+<h3>Билет 9</h3>
+<h4>
+Дан массив чисел arr_d.
+Определить максимальную разность элеметов по схеме:<br>
+первый - последний, второй - предпоследний...<br>
+И вывести на печать сумму и номера элементов.<br>
+</h4>
+</div>
+<div>
+<table id = "tabb" border = "2">
+<tr>
+<th>ID</th>
+<th>Count</th>
+</tr>
+<tbody id="taBody">
+<tr>
+
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<button id="MathLog">
+Search
+</button>
+</div>
+<div>
+<input id="inputArr"/>
+<button id="addInArr">
+Add
+</button>
+</div>
+
+</div>
+<script>
+var arr_d = new Array();
+var btnpush = document.getElementById('addInArr');
+var btnsearch = document.getElementById('MathLog');
+var counter = 0;
+btnpush.onclick = function() {
+var inputCount = document.getElementById("inputArr");
+var table = document.getElementById("tabb");
+var tbody = document.getElementById("taBody");
+function ArrAdd() {
+let tr = document.createElement("tr");
+for(let i = 0; i < 2; i++) {
+let td = document.createElement("td");
+if(i == 0)
+{
+td.innerHTML = counter;
+counter = counter + 1;
+}
+else
+{
+td.innerHTML = inputCount.value;
+// alert("else " + inputCount.value);
+arr_d.push(inputCount.value);
+// alert(arr_d[arr_d.length-1 ]);
+}
+
+tr.appendChild(td);
+table.appendChild(tr);
+
+}
+}
+ArrAdd();
+}
+btnsearch.onclick = function() {
+// alert(arr_d[arr_d.length-1]);
+el1 = 0;
+el2 = 0;
+max = 0;
+j = arr_d.length-1;
+for (i = 0; i < arr_d.length; i++)
+{
+if ((arr_d[i] - arr_d[j]) > max)
+{
+el1 = i;
+el2 = j;
+max = arr_d[i] - arr_d[j];
+}
+j = j - 1;
+}
+if (max != 0){
+alert("Максмальная разность равна " + max + " между " + el1 + "-ым и " + el2 + "-ым элемнтом");}
+else{alert("Ничего не найдено");}
+
+}
+</script>
+
+
+
+
+
+
+
+</div>
+</html>

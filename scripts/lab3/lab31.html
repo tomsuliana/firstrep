@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Какой-то текст уже для 3 лабы</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        #result{font-style: italic;}
+    </style>
+    <script type="text/javascript">
+        function printtree(){
+            var string = print(document.documentElement);
+            console.log(string);
+            var container = document.getElementById('result');
+            container.innerText = string;
+
+        }
+        function print(el,s=0){
+            if (el == null)
+            return '';
+            var str = '';
+            for(i=0;i<s;i++){
+                str = str + '\u00A0';
+            }
+            var result = str + el.nodeName + '\n';
+
+            for(var child of el.children)
+            result += print(child, s + 1);
+            return result;
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Текст песни</h1>
+    <ul>
+        <li>Вдоль ночных дорог</li>
+        <li>Не жалея ног</li>
+        <li><s>Не потеряй его</s></li>
+    </ul>
+    <p><s>Математическая</s> Физическая формула: <var>E</var>=<var>m</var>*<var>c<sup>2</sup></var></p>
+    <button onclick="printtree()">Показать дерево</button>
+    
+    <div id="result"></div>
+</body>
+</html>

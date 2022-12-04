@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link
+        href="http://e-learning.bmstu.ru/iu6/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css" rel="stylesheet">
+        <title>Оформление заказов</title>
+        <style>
+            #table1 td:hover{
+                background-color:cornflowerblue;
+            }
+        </style>
+        <script>
+            function printrow(){
+                inputname = document.getElementById('input_name').value;
+                inputcost = document.getElementById('input_cost').value;
+                new_row = document.createElement('tr');
+                new_td1 = document.createElement('td');
+                new_td2 = document.createElement('td');
+                new_td1.innerText = inputname;
+                new_td2.innerText = inputcost;
+                new_td2.setAttribute("class","price");
+                new_row.appendChild(new_td1);
+                new_row.appendChild(new_td2);
+                new_row.setAttribute("onclick","putrow(this)");
+                t1 = document.getElementById("table1").appendChild(new_row);
+            }
+            function countcost(){
+                var s = 0;
+                const pricelist = document.getElementsByClassName('price');
+                for(const pr of pricelist){
+                    s+=parseInt(pr.textContent);
+                }
+                text = "Сумма: "+s;
+                new_par = document.createElement('p');
+                new_par.innerText = text;
+                document.getElementById("summ").appendChild(new_par);
+            }
+            function putrow(row){
+                //new_row = document.createElement('tr');
+                //new_td = document.createElement('td');
+                //new_td.innerText = "vsenorm";
+                //new_row.appendChild(new_td);
+                t2 = document.getElementById("table2").appendChild(row);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="row">
+        <div class="col-4">
+        <h3>Оформите свой заказ</h3>
+        <p>Наименование: <input type="input" id="input_name"></p>
+        <p>Стоимость: <input type="number" id="input_cost"></p>
+        <input type="button" value="Добавить запись" onclick="printrow()">
+        <input type="button" value="Рассчитать сумму" onclick="countcost()">
+        </div>
+        <div class="col-2">
+        <table id="table1">
+            <tr>
+                <th>
+                    Наименование
+                </th>
+                <th>
+                    Стоимость
+                </th>
+            </tr>
+        </table>
+        </div>
+        <div class="col-2" id="summ">
+
+        </div>
+        <div class="col-4">
+            <h3>Таблица формирования заказа</h3>
+            <table id="table2">
+                <tr>
+                    <th>
+                        Наименование  
+                    </th>
+                    <th>
+                        Стоимость
+                    </th>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </body>
+</html>
