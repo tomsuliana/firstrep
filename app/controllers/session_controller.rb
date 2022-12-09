@@ -13,6 +13,8 @@ class SessionController < ApplicationController
   end
 
   def logout
+    session[:current_user_id] = nil
+    redirect_to root_path
   end
 
   def redirect_to_login
