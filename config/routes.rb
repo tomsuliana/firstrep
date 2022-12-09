@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'session/login'
-  get 'session/authorize'
+  root "session#login"
+  post 'session/authorize'
   get 'session/logout'
   resources :users
-  root "example#input"
+  get 'example/input'
   post 'example/show', as: 'result'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
