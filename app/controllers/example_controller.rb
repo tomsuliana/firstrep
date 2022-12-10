@@ -1,4 +1,6 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
+
+require 'prime'
 
 # Class for controller
 class ExampleController < ApplicationController
@@ -6,29 +8,38 @@ class ExampleController < ApplicationController
   def input; end
 
   def show
-    @arr = palindroms(params[:digit].to_i)
-  end
-
-  private
-
-  def palindrom(aaa)
-    stra = aaa.to_s
-    stra.reverse == stra
-  end
-
-  def palindroms(num)
-    mas = []
-    num.times do |iter|
-      mas.push(iter) if palindrom(iter) && palindrom(iter * iter)
+    # @arr = palindroms(params[:digit].to_i)
+    if (arr = Palindrom.find_by_digit(@digit = params[:digit]))
+      @arr = arr.decoded_palindrom()
+    else
+      arr = Palindrom.new(digit: @digit)
+      if arr.save
+        @arr = arr.decoded_palindrom
+      else
+        @error = arr.errors.messages[:digit][0]
+        #redirect_to root_path 
+        # , notice: arr.errors.messages[:digit][0]
+      end
     end
-    mas
   end
+
+  # private
+
+  # def palindrom(aaa)
+  #   stra = aaa.to_s
+  #   stra.reverse == stra
+  # end
+
+  # def palindroms(num)
+  #   mas = []
+  #   num.times do |iter|
+  #     mas.push(iter) if palindrom(iter) && palindrom(iter * iter)
+  #   end
+  #   mas
+  # end
 
   def check
     num = params[:digit]
-    # return 'Empty string' if num.nil? || num.empty?
-
-    # 'Enter numbers only' unless num.match(/^\d+$/)
     if num.nil? || num.empty?
       @error = 'Empty string'
     elsif !num.match(/^\d+$/)

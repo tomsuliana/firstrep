@@ -1,4 +1,7 @@
 <h1>Ввод числа</h1>
+<%unless flash[:notice].blank?%>
+  <h2 style = 'color:red'><%=flash[:notice]%></h2>
+<%end%>
 
 
 <%= form_with url: result_path, method: :post do |form| %>
