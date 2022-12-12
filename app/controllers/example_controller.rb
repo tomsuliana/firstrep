@@ -16,11 +16,13 @@ class ExampleController < ApplicationController
       if arr.save
         @arr = arr.decoded_palindrom
       else
-        @error = arr.errors.messages[:digit][0]
-        #redirect_to root_path 
-        # , notice: arr.errors.messages[:digit][0]
+        redirect_to root_path, notice: arr.errors.messages[:digit][0]
       end
     end
+  end
+
+  def show_db
+    render xml: Palindrom.all
   end
 
   # private

@@ -1,5 +1,0 @@
-<% if @error.nil?%>
-  <%= turbo_stream.update 'result' , partial: 'result'%>
-<% else %>
-  <%= turbo_stream.update 'result' , partial: 'error'%>
-<% end %>

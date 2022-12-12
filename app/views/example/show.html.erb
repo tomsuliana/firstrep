@@ -1,0 +1,15 @@
+<h1>Результат</h1>
+  <table>
+    <tr>
+      <th>Число</th>
+      <th>Квадрат числа</th>
+    </tr>
+    <% @arr.each do |i| %>
+    <tr>
+      <td><%= i %></td>
+      <td><%= i*i %></td>
+    </tr>
+    <% end %>
+  </table>
+  <h3 id = 'number-container'>Количество: <%= @arr.length %> </h3>
+<%= link_to 'Вернуться на страницу ввода', root_path %>

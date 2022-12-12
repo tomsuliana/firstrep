@@ -1,5 +1,5 @@
 class Palindrom < ApplicationRecord
-  validates_uniqueness_of :digit, :arr, message: 'Введено число'
+  validates_uniqueness_of :digit, :arr, message: 'Введено не число'
   validates :digit, format: { with: /\A\d+\z/, message: 'Введите что-то' }
   before_save :set_palindrom
   def decoded_palindrom
