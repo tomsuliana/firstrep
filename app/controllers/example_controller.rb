@@ -2,6 +2,7 @@
 
 # Class for controller
 class ExampleController < ApplicationController
+  before_action :require_login
   before_action :check, only: [:show]
   def input; end
 
@@ -34,5 +35,9 @@ class ExampleController < ApplicationController
     elsif !num.match(/^\d+$/)
       @error = 'Enter numbers only'
     end
+  end
+
+  def require_login
+    redirect_to root_path if session[:current_user_id].nil?
   end
 end

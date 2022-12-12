@@ -2,7 +2,7 @@
 <p>Find me in app/views/session/login.html.erb</p>
 <% flash.each do |type, msg| %>
   <% unless type == "notice" %>
-    <p class="text-danger mt-2"><%= msg %></p>
+    <p id = 'error' class="text-danger mt-2"><%= msg %></p>
   <% end %>
 <% end %>
 

@@ -6,6 +6,10 @@
   <%= form.text_field(:digit, value: "78") %>
   <%= form.submit('Отправить', id: 'palindrom-btn') %>
 <% end %>
+<br>
+<%= form_with url: "/session/logout", method: :get do |form| %>
+  <%= form.submit('Выход', id: 'exit-btn') %>
+<% end %>
 
 <p><%= flash[:error]%></p>
 <div id="result"></div>
