@@ -1,7 +1,5 @@
 # frozen_string_literal: false
 
-require 'prime'
-
 # Class for controller
 class ExampleController < ApplicationController
   before_action :check, only: [:show]
