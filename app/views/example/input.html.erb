@@ -1,5 +1,5 @@
 <h1>Ввод числа</h1>
-
+<h1>Привет! <%= User.find_by(id: session[:current_user_id]).name %><h1>
 
 <%= form_with url: result_path, method: :post do |form| %>
   <%= form.label :digit, 'Число' %>
