@@ -8,7 +8,7 @@ class ExampleController < ApplicationController
   def show
     # @arr = palindroms(params[:digit].to_i)
     if (arr = Palindrom.find_by_digit(@digit = params[:digit]))
-      @arr = arr.decoded_palindrom()
+      @arr = arr.decoded_palindrom
     else
       arr = Palindrom.new(digit: @digit)
       if arr.save

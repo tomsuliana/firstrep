@@ -1,20 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe 'Palindrom', type: :request do
-  # Проверка на успешные get запросы
-  describe 'GET /input' do
-    it 'returns http success' do
-      get root_path
-      expect(response).to have_http_status(:success)
-    end
-  end
-  describe 'GET /show' do
-    it 'returns http redirection' do
-      get '/example/show'
-      expect(response).to have_http_status(:redirect)
-    end
-  end
+RSpec.describe Palindrom, type: :model do
   describe 'Add and search db(check adding to db)' do
     i = rand(1..100)
     it 'Adds correctly' do
@@ -30,11 +17,11 @@ RSpec.describe 'Palindrom', type: :request do
       expect(t1).not_to eq(t)
     end
   end
-end
-
-RSpec.describe Palindrom, type: :model do
-  it 'another checks uniqueness_of field' do
-    Palindrom.create!(digit: 15)
-    expect { Palindrom.create!(digit: 15) }.to raise_error ActiveRecord::RecordInvalid
+  describe 'uniq field' do
+    it 'another checks uniqueness_of field' do
+      Palindrom.create!(digit: 15)
+      expect { Palindrom.create!(digit: 15) }.to raise_error ActiveRecord::RecordInvalid
+    end
   end
 end
+
